@@ -1,34 +1,42 @@
 var tl = gsap.timeline();
 
-function loco(){
+function loco() {
   gsap.registerPlugin(ScrollTrigger);
 
-// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("main"),
-  smooth: true
-});
-// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-locoScroll.on("scroll", ScrollTrigger.update);
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("main"),
+    smooth: true,
+  });
+  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+  locoScroll.on("scroll", ScrollTrigger.update);
 
-// tell ScrollTrigger to use these proxy methods for the "main" element since Locomotive Scroll is hijacking things
-ScrollTrigger.scrollerProxy("main", {
-  scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-  getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-  },
-  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-  pinType: document.querySelector("main").style.transform ? "transform" : "fixed"
-});
-// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  // tell ScrollTrigger to use these proxy methods for the "main" element since Locomotive Scroll is hijacking things
+  ScrollTrigger.scrollerProxy("main", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.querySelector("main").style.transform
+      ? "transform"
+      : "fixed",
+  });
+  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
-// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-ScrollTrigger.refresh();
-
+  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+  ScrollTrigger.refresh();
 }
 function menu() {
   let xB = document.querySelector(".xross_btn");
@@ -107,6 +115,11 @@ function loader() {
   });
 
   tl.to(".ooo", {
+    y: "60vh",
+    duration: 0.3,
+  });
+
+  tl.to(".c", {
     y: "60vh",
     duration: 0.3,
   });
@@ -222,6 +235,7 @@ function cursor() {
   let card2 = document.querySelector(".card2");
   let card3 = document.querySelector(".card3");
   let page4 = document.querySelector("#page4");
+  let page5 = document.querySelector("#page5");
   let xrossB = document.querySelector(".xross_btn");
   let xross = document.querySelector(".xross_container");
   let xrossA = document.querySelectorAll(".xross_container ul li a");
@@ -283,7 +297,13 @@ function cursor() {
 
   page4.addEventListener("mouseenter", function () {
     gsap.to(cursor, {
-      scale: 0,
+      display: "none",
+    });
+  });
+
+  page5.addEventListener("mouseenter", function () {
+    gsap.to(cursor, {
+      scale: 1,
     });
   });
 
@@ -307,6 +327,7 @@ function work() {
   let div3 = document.querySelector(".div3");
   let div4 = document.querySelector(".div4");
   let workC = document.querySelector(".work_cursor");
+  let div1V = document.querySelector(".div1 .video_container video");
   div1.addEventListener("mousemove", function (dets) {
     gsap.to(workC, {
       x: dets.x,
@@ -317,6 +338,13 @@ function work() {
   div1.addEventListener("mouseleave", function (dets) {
     gsap.to(workC, {
       scale: 0,
+    });
+
+    gsap.to(div1V, {
+      pause: true,
+      currentTime: 0,
+      duration: 0.2,
+      ease: "power1.inOut",
     });
   });
 
@@ -358,6 +386,58 @@ function work() {
       scale: 0,
     });
   });
+
+  div1.addEventListener("mouseenter", function () {
+    gsap.to(div1V, {
+      play: true,
+    });
+  });
+  div1.addEventListener("click", function () {
+    console.log("click");
+    window.open("https://akashnegi62.github.io/create/", "_blank");
+  });
+}
+function updateClock() {
+  const now = new Date();
+
+  // Get hours, minutes, and seconds
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  // Determine AM/PM
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  // Convert hours from 24-hour to 12-hour format
+  hours = hours % 12;
+  hours = hours ? hours : 12; // The hour '0' should be '12'
+
+  // Format minutes and seconds
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  // Format time as HH:MM:SS AM/PM
+  const timeString = `${hours}:${minutes}:${seconds} | ${ampm}`;
+
+  // Display time
+  document.getElementById("clock").textContent = timeString;
+  setInterval(updateClock, 1000);
+}
+function Arrow() {
+  let arrowBtn = document.querySelector(".arrow");
+  arrowBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scrolling
+    });
+  });
+
+  gsap.from(".arrow", {
+    y: 30,
+    repeat: -1,
+    yoyo: true,
+    duration: 0.7,
+  });
 }
 
 menu();
@@ -371,3 +451,7 @@ scroller();
 cursor();
 
 work();
+
+updateClock();
+
+Arrow();
