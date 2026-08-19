@@ -1,0 +1,92 @@
+export const projects = [
+  {
+    id: "01",
+    title: "BSERC",
+    stack: "Next.js, Full-Stack",
+    description: "Educational platform for space research and education.",
+    tags: ["Education", "Web"],
+    image: "/Image/bserc.webp",
+    link: "https://bserc.in/",
+  },
+  {
+    id: "02",
+    title: "Callories",
+    stack: "Full-Stack, Health Tech",
+    description: "Lose or gain weight through sports, fitness, yoga & expert coaching — with personalized diet plans and a community.",
+    tags: ["Health", "Community"],
+    image: "/Image/callories.webp",
+    link: "https://callories.com/",
+  },
+  {
+    id: "03",
+    title: "Aura Learn",
+    stack: "Next.js 15, FastAPI",
+    description: "Built a full-stack platform that turns uploaded PDFs/DOCX into interactive flashcards and quizzes.",
+    tags: ["EdTech", "AI"],
+    image: "/Image/aura.webp",
+    link: "https://aura-learn-beta.vercel.app/",
+  },
+  {
+    id: "04",
+    title: "ChatSphere",
+    stack: "AI, Real-time, Full-Stack",
+    description: "Built an AI-powered chatbot platform from scratch, handling real-time conversational interaction end-to-end.",
+    tags: ["AI", "Chatbot"],
+    image: "/Image/chat.webp",
+    link: "https://chatsphere-user.vercel.app/",
+  },
+  {
+    id: "05",
+    title: "MandarinVacations",
+    stack: "Responsive Web, Full-Stack",
+    description: "Built a responsive travel agency website end-to-end, showcasing vacation packages, destinations, and booking inquiries.",
+    tags: ["Travel", "Booking"],
+    image: "/Image/vacation.webp",
+    link: "https://www.mandarinworldwidevacations.com/",
+  },
+  {
+    id: "06",
+    title: "Watnidea",
+    stack: "Full-Stack",
+    description: "We don't just design logos, we architect the Aura that makes your brand the Main Character of your industry.",
+    tags: ["Innovation", "Platform"],
+    image: "/Image/watnidea.webp",
+    link: "https://watnidea.vercel.app/",
+  },
+];
+
+export const capabilities = [
+  {
+    id: "A",
+    title: "Backend Engineering",
+    desc: "Designing secure, scalable APIs and database architectures that form the backbone of complex applications.",
+  },
+  {
+    id: "B",
+    title: "Frontend Development",
+    desc: "Crafting performant, responsive, and highly interactive user interfaces using modern frameworks.",
+  },
+  {
+    id: "C",
+    title: "DevOps & Deployment",
+    desc: "Implementing CI/CD pipelines and cloud infrastructure to ensure reliable and fast software delivery.",
+  },
+];
+
+export const techStack = [
+  "TypeScript",
+  "Next.js",
+  "React",
+  "Node.js",
+  "Express.js",
+  "Python",
+  "PostgreSQL",
+  "MongoDB",
+  "AWS",
+  "Tailwind CSS",
+  "GSAP",
+  "Framer Motion",
+  "Docker",
+  "Jenkins",
+  "Supabase",
+];
