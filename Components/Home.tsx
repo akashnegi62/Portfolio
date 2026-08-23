@@ -10,7 +10,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto">
         <motion.p 
-          className="font-mono text-xs tracking-widest uppercase text-text-secondary mb-8 ml-4"
+          className="font-mono text-xs tracking-widest uppercase text-text-secondary mb-8 ml-0 md:ml-0 lg:ml-4"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.5 }}
         >
           Full-Stack Developer & Software Architect
