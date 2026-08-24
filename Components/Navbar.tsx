@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,9 +48,34 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Nav Toggle placeholder - simplified for now */}
-        <div className="md:hidden text-text-secondary font-mono text-xs uppercase tracking-widest bg-bg-glass px-4 py-2 rounded-full border border-border-subtle">
-          Menu
+        {/* Mobile Nav Toggle & Menu */}
+        <div className="md:hidden relative z-50">
+          <div 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-text-secondary font-mono text-xs uppercase tracking-widest bg-bg-glass px-4 py-2 rounded-full border border-border-subtle cursor-pointer select-none flex justify-center"
+          >
+            {isMobileMenuOpen ? "Close" : "Menu"}
+          </div>
+
+          {/* Mobile Nav Menu */}
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute top-full right-0 mt-3 flex flex-row items-center gap-6"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-text-secondary font-mono text-xs uppercase tracking-widest bg-bg-glass px-4 py-2 rounded-full border border-border-subtle hover:text-accent hover:border-border-subtle transition-colors whitespace-nowrap flex justify-center"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
     </motion.header>
