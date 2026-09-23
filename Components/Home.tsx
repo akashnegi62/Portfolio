@@ -17,11 +17,11 @@ export default function Home() {
         </motion.p>
         
         <motion.h1 
-          className="font-playfair text-5xl md:text-8xl lg:text-9xl text-text-primary leading-[0.9] mb-12"
+          className="font-playfair text-4xl md:text-7xl lg:text-8xl text-text-primary lg:leading-[0.9] mb-12"
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7, type: "spring", stiffness: 50 }}
         >
           Crafting seamless <br />
-          digital experiences from <span className="italic text-accent">front to back.</span>
+          digital experiences <br /> from <span className="italic text-accent">front to back.</span>
         </motion.h1>
 
         <motion.div 
