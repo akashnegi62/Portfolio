@@ -20,7 +20,7 @@ export default function Loader() {
         >
           <motion.div className="overflow-hidden">
             <motion.h1 
-              className="font-playfair text-center text-4xl md:text-7xl text-text-primary"
+              className="font-playfair text-center text-3xl md:text-7xl text-text-primary"
               initial={{ y: 100 }}
               animate={{ y: 0 }}
               transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.2 }}

@@ -67,7 +67,7 @@ export default function About() {
             ))}
           </div>
 
-          <h4 className="font-mono text-xs tracking-widest uppercase text-text-secondary mb-8">
+          <h4 className="font-mono text-sm tracking-widest uppercase text-text-secondary mb-8">
             Connect
           </h4>
           <div className="flex gap-6">
